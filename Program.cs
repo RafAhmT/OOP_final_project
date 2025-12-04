@@ -4,6 +4,11 @@ namespace OOP_final_project
 {
     internal class Program
     {
+        // component based modelling (1) [Rafan] 
+        // API with DB (2) [Brian] 
+        // Unit testing (3) [Radit]
+        // Design patterns (4) [Syauqi]
+        // Refactor (5) [Rafan]
         static void Main(string[] args)
         {
             bool isrun = true;
