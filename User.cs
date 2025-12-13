@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_final_project
 {
+    // --- Abstract Base Class ---
     public abstract class GlobalUser
     {
         public Guid Id { get; private set; }
@@ -22,6 +23,23 @@ namespace OOP_final_project
         }
     }
 
+    // --- CLASS BARU: Admin ---
+    public class Admin : GlobalUser
+    {
+        // Atribut tambahan khusus Admin
+        public string Department { get; set; }
+        public int AccessLevel { get; set; } // Misal: 1 = Basic, 99 = SuperAdmin
+
+        public Admin() : base() { }
+
+        public Admin(string name, string department, int accessLevel) : base(name)
+        {
+            Department = department;
+            AccessLevel = accessLevel;
+        }
+    }
+
+    // --- Existing Classes ---
     public class Nurse : GlobalUser
     {
         public string WorkArea { get; set; }
