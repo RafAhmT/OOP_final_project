@@ -1,6 +1,4 @@
 using OOP_final_project;
-using System;
-using System.Numerics;
 using Xunit;
 
 namespace OOP_final_project.Tests

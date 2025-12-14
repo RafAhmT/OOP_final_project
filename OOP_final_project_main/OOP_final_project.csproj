@@ -24,9 +24,4 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 		<PackageReference Include="OOP_Assigment_classlib" Version="1.0.0" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\OOP_final_project.Tests\OOP_final_project.Tests.csproj" />
-	</ItemGroup>
-
 </Project>
