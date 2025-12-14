@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_final_project
 {
@@ -23,12 +19,11 @@ namespace OOP_final_project
         }
     }
 
-    // --- CLASS BARU: Admin ---
+    // --- Admin ---
     public class Admin : GlobalUser
     {
-        // Atribut tambahan khusus Admin
         public string Department { get; set; }
-        public int AccessLevel { get; set; } // Misal: 1 = Basic, 99 = SuperAdmin
+        public int AccessLevel { get; set; }
 
         public Admin() : base() { }
 
@@ -39,7 +34,6 @@ namespace OOP_final_project
         }
     }
 
-    // --- Existing Classes ---
     public class Nurse : GlobalUser
     {
         public string WorkArea { get; set; }
@@ -71,6 +65,7 @@ namespace OOP_final_project
         public string Illness { get; set; }
         public int Age { get; set; }
         public Guid? AssignedDoctorId { get; set; }
+
         private Doctor _assignedDoctor;
         public Doctor AssignedDoctor
         {

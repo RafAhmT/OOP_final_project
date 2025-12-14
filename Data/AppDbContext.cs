@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OOP_final_project;
 
 namespace OOP_final_project.Data
 {
