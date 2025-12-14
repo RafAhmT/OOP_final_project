@@ -1,7 +1,8 @@
 # OOP_final_project
 ## things to implement 
-- API (actual API) 
-- Component based modelling
+- API with DB (DONE)
+- Unit testing (OTW)
+- Component based modelling (DONE)
 - Design patterns
 - Refactoring
 
