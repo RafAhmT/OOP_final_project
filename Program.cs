@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using OOP_final_project.Controllers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OOP_final_project
 {
@@ -33,6 +36,7 @@ namespace OOP_final_project
         // ==========================================
         static void RunConsoleApp()
         {
+            // Inisialisasi 4 Controller Console untuk CRUD
             AdminController adminCtrl = new AdminController();
             NurseController nurseCtrl = new NurseController();
             DoctorController docCtrl = new DoctorController();
@@ -48,6 +52,7 @@ namespace OOP_final_project
                 };
 
                 Console.Clear();
+                // Asumsi class textdraw ada dan berfungsi
                 textdraw textdraw = new textdraw();
                 textdraw.drawtitle("HOSPITAL APPLICATION", "CRUD Console Mode", false);
                 textdraw.drawmultoption(options);
@@ -105,7 +110,9 @@ namespace OOP_final_project
                     case "1":
                         Console.Write("Name: "); string name = Console.ReadLine();
                         Console.Write("Department: "); string dept = Console.ReadLine();
-                        Console.Write("Access Level (Number): "); int level = int.Parse(Console.ReadLine());
+                        // Error handling sederhana untuk int
+                        int level = 0;
+                        if (!int.TryParse(Console.ReadLine(), out level)) level = 1;
                         ctrl.AddAdmin(name, dept, level);
                         Console.ReadKey();
                         break;
@@ -293,25 +300,35 @@ namespace OOP_final_project
             }
         }
 
+        // ==========================================
+        // API SERVER (MODE 1 - TETAP SAMA)
+        // ==========================================
         static void RunApiServer(string[] args)
         {
             Console.WriteLine("Starting Web API Server...");
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Perintah ini secara otomatis menemukan semua 4 ApiController Anda
             builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             var app = builder.Build();
             app.UseSwagger();
             app.UseSwaggerUI();
             Console.WriteLine("--------------------------------------------------");
+            // Menggunakan port 5000 yang sesuai dengan komputer Anda
             Console.WriteLine("Swagger UI is ready at: http://localhost:5000/swagger");
             Console.WriteLine("--------------------------------------------------");
             app.UseHttpsRedirection();
             app.UseAuthorization();
+
+            // Perintah ini secara otomatis memetakan semua route API Anda (GET, POST, PUT, DELETE)
             app.MapControllers();
+
             app.Run();
         }
     }
