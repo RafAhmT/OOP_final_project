@@ -69,7 +69,6 @@ namespace OOP_final_project.Controllers
 
             _admins.Remove(adminToRemove);
 
-            // Mengembalikan status 204 No Content (berhasil dihapus tanpa body)
             return NoContent();
         }
     }
