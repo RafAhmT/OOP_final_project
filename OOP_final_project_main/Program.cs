@@ -22,8 +22,8 @@ namespace OOP_final_project
             Console.WriteLine("===================================");
             Console.WriteLine("   HOSPITAL OOP PROJECT LAUNCHER   ");
             Console.WriteLine("===================================");
-            Console.WriteLine("[1] Run as API Server (Brian's Task)");
-            Console.WriteLine("[2] Run as Console App (Rafan's Task)");
+            Console.WriteLine("[1] Run as API Server");
+            Console.WriteLine("[2] Run as Console App");
             Console.Write("Select Mode > ");
 
             string mode = Console.ReadLine();
@@ -31,12 +31,8 @@ namespace OOP_final_project
             else RunConsoleApp();
         }
 
-        // ==========================================
-        // TUGAS RAFAN (CONSOLE UI - ENGLISH)
-        // ==========================================
         static void RunConsoleApp()
         {
-            // Inisialisasi 4 Controller Console untuk CRUD
             AdminController adminCtrl = new AdminController();
             NurseController nurseCtrl = new NurseController();
             DoctorController docCtrl = new DoctorController();
@@ -299,10 +295,6 @@ namespace OOP_final_project
                 }
             }
         }
-
-        // ==========================================
-        // API SERVER (MODE 1 - TETAP SAMA)
-        // ==========================================
         static void RunApiServer(string[] args)
         {
             Console.WriteLine("Starting Web API Server...");
