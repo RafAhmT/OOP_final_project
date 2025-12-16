@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
-using System.Linq; // PENTING: Perlu untuk menggunakan FirstOrDefault
+using System.Linq; 
 using OOP_final_project;
 
 
@@ -11,11 +11,9 @@ namespace OOP_final_project.Controllers
     [ApiController]
     public class ApiDoctorsController : ControllerBase
     {
-        // Data sementara (Static List)
         private static List<Doctor> _doctors = new List<Doctor>
         {
-            // Contoh data
-            new Doctor("Dr. Strange", "Bedah Syaraf", 101)
+            new Doctor("Dr. Strange", "Neurology", 101)
         };
 
         // 1. READ ALL: GET /api/ApiDoctors
@@ -31,7 +29,6 @@ namespace OOP_final_project.Controllers
         {
             var newDoc = new Doctor(name, specialty, room);
             _doctors.Add(newDoc);
-            // Mengembalikan status 201 Created
             return CreatedAtAction(nameof(GetAll), new { id = newDoc.Id }, newDoc);
         }
 
@@ -47,12 +44,10 @@ namespace OOP_final_project.Controllers
                 return NotFound($"Doctor with ID {id} not found.");
             }
 
-            // Update properti data lama
             existingDoc.Name = name;
             existingDoc.Specialty = specialty;
             existingDoc.WorkRoom = room;
 
-            // Mengembalikan status 200 OK
             return Ok(existingDoc);
         }
 
@@ -70,7 +65,6 @@ namespace OOP_final_project.Controllers
 
             _doctors.Remove(docToRemove);
 
-            // Mengembalikan status 204 No Content (berhasil dihapus)
             return NoContent();
         }
     }

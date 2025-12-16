@@ -13,16 +13,19 @@ namespace OOP_final_project.Controllers
         public void AddDoctor(string name, string specialty, int room)
         {
             _doctorList.Add(new Doctor(name, specialty, room));
-            Console.WriteLine($"[Sukses] Dokter '{name}' berhasil ditambahkan.");
+            Console.WriteLine($"[SUCCESS] DOCTOR '{name}' HAS BEEN ADDED");
         }
 
         public void ViewAllDoctors()
         {
-            Console.WriteLine("\n--- DAFTAR DOKTER ---");
-            if (_doctorList.Count == 0) { Console.WriteLine("Data kosong."); return; }
+            Console.WriteLine("\n--- DOCTOR LIST ---");
+            if (_doctorList.Count == 0) { 
+                Console.WriteLine("EMPTY DATA"); 
+                return; 
+            }
             foreach (var item in _doctorList)
             {
-                Console.WriteLine($"ID: {item.Id} | Nama: {item.Name} | Spesialis: {item.Specialty} | Ruang: {item.WorkRoom}");
+                Console.WriteLine($"ID: {item.Id} | Name: {item.Name} | Specialty: {item.Specialty} | Room: {item.WorkRoom}");
             }
         }
 
@@ -34,9 +37,9 @@ namespace OOP_final_project.Controllers
                 target.Name = name;
                 target.Specialty = spec;
                 target.WorkRoom = room;
-                Console.WriteLine("[Sukses] Data Dokter berhasil diupdate.");
+                Console.WriteLine("[SUCCESS] DOCTOR DATA HAS BEEN UPDATED");
             }
-            else Console.WriteLine("[Error] ID tidak ditemukan.");
+            else Console.WriteLine("[ERROR] ID NOT FOUND");
         }
 
         public void DeleteDoctor(Guid id)
@@ -45,9 +48,9 @@ namespace OOP_final_project.Controllers
             if (target != null)
             {
                 _doctorList.Remove(target);
-                Console.WriteLine("[Sukses] Data Dokter berhasil dihapus.");
+                Console.WriteLine("[SUCCESS] DOCTOR DATA HAS BEEN ERASED");
             }
-            else Console.WriteLine("[Error] ID tidak ditemukan.");
+            else Console.WriteLine("[ERROR] ID NOT FOUND");
         }
     }
 }

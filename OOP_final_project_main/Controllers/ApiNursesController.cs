@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System; // Diperlukan untuk Guid
-using System.Linq; // Diperlukan untuk FirstOrDefault
+using System; 
+using System.Linq; 
 using OOP_final_project;
 
 
@@ -11,10 +11,9 @@ namespace OOP_final_project.Controllers
     [ApiController]
     public class ApiNursesController : ControllerBase
     {
-        // Data sementara (Static List)
         private static List<Nurse> _nurses = new List<Nurse>
         {
-            new Nurse("Suster Siti", "UGD")
+            new Nurse("Nurse Siti", "UGD")
         };
 
         // 1. READ ALL: GET /api/ApiNurses
@@ -30,7 +29,6 @@ namespace OOP_final_project.Controllers
         {
             var newNurse = new Nurse(name, workArea);
             _nurses.Add(newNurse);
-            // Mengembalikan status 201 Created
             return CreatedAtAction(nameof(GetAll), new { id = newNurse.Id }, newNurse);
         }
 
@@ -42,7 +40,6 @@ namespace OOP_final_project.Controllers
 
             if (existingNurse == null)
             {
-                // Mengembalikan status 404 Not Found
                 return NotFound($"Nurse with ID {id} not found.");
             }
 
@@ -68,7 +65,6 @@ namespace OOP_final_project.Controllers
 
             _nurses.Remove(nurseToRemove);
 
-            // Mengembalikan status 204 No Content (berhasil dihapus)
             return NoContent();
         }
     }

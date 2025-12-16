@@ -15,21 +15,21 @@ namespace OOP_final_project.Controllers
         {
             Admin newAdmin = new Admin(name, department, accessLevel);
             _adminList.Add(newAdmin);
-            Console.WriteLine($"[Sukses] Admin '{name}' berhasil dibuat.");
+            Console.WriteLine($"[SUCCESS] ADMIN '{name}' HAS BEEN CREATED");
         }
 
         // READ
         public void ViewAllAdmins()
         {
-            Console.WriteLine("\n--- DAFTAR ADMIN ---");
+            Console.WriteLine("\n--- ADMIN LIST ---");
             if (_adminList.Count == 0)
             {
-                Console.WriteLine("Data kosong.");
+                Console.WriteLine("EMPTY DATA");
                 return;
             }
             foreach (var item in _adminList)
             {
-                Console.WriteLine($"ID: {item.Id} | Nama: {item.Name} | Dept: {item.Department} | Level: {item.AccessLevel}");
+                Console.WriteLine($"ID: {item.Id} | Name: {item.Name} | Dept: {item.Department} | Level: {item.AccessLevel}");
             }
         }
 
@@ -42,26 +42,25 @@ namespace OOP_final_project.Controllers
                 target.Name = name;
                 target.Department = dept;
                 target.AccessLevel = level;
-                Console.WriteLine("[Sukses] Data Admin berhasil diupdate.");
+                Console.WriteLine("[SUCCESS] ADMIN DATA UPDATED.");
             }
             else
             {
-                Console.WriteLine("[Error] ID Admin tidak ditemukan!");
+                Console.WriteLine("[ERROR] ADMIN DATA NOT FOUND");
             }
         }
 
-        // DELETE
         public void DeleteAdmin(Guid id)
         {
             var target = _adminList.FirstOrDefault(x => x.Id == id);
             if (target != null)
             {
                 _adminList.Remove(target);
-                Console.WriteLine("[Sukses] Data Admin berhasil dihapus.");
+                Console.WriteLine("[SUCCESS] ADMIN DATA SUCCESSFULLY DELETED.");
             }
             else
             {
-                Console.WriteLine("[Error] ID Admin tidak ditemukan!");
+                Console.WriteLine("[ERROR] ADMIN ID NOT FOUND!");
             }
         }
     }

@@ -255,8 +255,8 @@ namespace OOP_final_project
                 }
             }
             Environment.Exit(0);
-        }
-    }
+    }        }
+
     public enum FieldType
     {
         String,

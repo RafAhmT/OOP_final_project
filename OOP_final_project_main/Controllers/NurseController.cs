@@ -13,16 +13,19 @@ namespace OOP_final_project.Controllers
         public void AddNurse(string name, string workArea)
         {
             _nurseList.Add(new Nurse(name, workArea));
-            Console.WriteLine($"[Sukses] Perawat '{name}' berhasil ditambahkan.");
+            Console.WriteLine($"[SUCCESS] Nurse '{name}' HAS BEEN ADDED");
         }
 
         public void ViewAllNurses()
         {
-            Console.WriteLine("\n--- DAFTAR PERAWAT ---");
-            if (_nurseList.Count == 0) { Console.WriteLine("Data kosong."); return; }
+            Console.WriteLine("\n--- NURSES LIST ---");
+            if (_nurseList.Count == 0) {
+                Console.WriteLine("EMPTY DATA"); 
+                return; 
+            }
             foreach (var item in _nurseList)
             {
-                Console.WriteLine($"ID: {item.Id} | Nama: {item.Name} | Area: {item.WorkArea}");
+                Console.WriteLine($"ID: {item.Id} | Name: {item.Name} | Area: {item.WorkArea}");
             }
         }
 
@@ -33,9 +36,9 @@ namespace OOP_final_project.Controllers
             {
                 target.Name = name;
                 target.WorkArea = area;
-                Console.WriteLine("[Sukses] Data Perawat berhasil diupdate.");
+                Console.WriteLine("[SUCCESS] NURSE DATA HAS BEEN UPDATED.");
             }
-            else Console.WriteLine("[Error] ID tidak ditemukan.");
+            else Console.WriteLine("[ERROR] ID NOT FOUND.");
         }
 
         public void DeleteNurse(Guid id)
@@ -44,9 +47,9 @@ namespace OOP_final_project.Controllers
             if (target != null)
             {
                 _nurseList.Remove(target);
-                Console.WriteLine("[Sukses] Data Perawat berhasil dihapus.");
+                Console.WriteLine("[SUCCESS] NURSE DATA HAS BEEN DELETED");
             }
-            else Console.WriteLine("[Error] ID tidak ditemukan.");
+            else Console.WriteLine("[ERROR] ID NOT FOUND");
         }
     }
 }

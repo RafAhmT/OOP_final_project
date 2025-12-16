@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System; // Diperlukan untuk Guid
-using System.Linq; // Diperlukan untuk FirstOrDefault
+using System; 
+using System.Linq; 
 using OOP_final_project;
 
 
@@ -11,11 +11,9 @@ namespace OOP_final_project.Controllers
     [ApiController]
     public class ApiPatientsController : ControllerBase
     {
-        // Data sementara (Static List)
         private static List<Patient> _patients = new List<Patient>
         {
-            // Contoh data
-            new Patient("Budi Santoso", 30, "Demam Tinggi")
+            new Patient("Budi Santoso", 30, "Fever")
         };
 
         // 1. READ ALL: GET /api/ApiPatients
@@ -43,16 +41,13 @@ namespace OOP_final_project.Controllers
 
             if (existingPatient == null)
             {
-                // Mengembalikan status 404 Not Found
                 return NotFound($"Patient with ID {id} not found.");
             }
 
-            // Update properti data lama
             existingPatient.Name = name;
             existingPatient.Age = age;
             existingPatient.Illness = illness;
 
-            // Mengembalikan status 200 OK
             return Ok(existingPatient);
         }
 
@@ -64,13 +59,11 @@ namespace OOP_final_project.Controllers
 
             if (patientToRemove == null)
             {
-                // Mengembalikan status 404 Not Found
                 return NotFound($"Patient with ID {id} not found.");
             }
 
             _patients.Remove(patientToRemove);
 
-            // Mengembalikan status 204 No Content (berhasil dihapus)
             return NoContent();
         }
     }
