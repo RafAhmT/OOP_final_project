@@ -90,7 +90,7 @@ namespace OOP_final_project
                         Console.ReadKey();
                         break;
                     case "5":
-                        mainscreen();
+                        back = true; // Simply exit the loop
                         break;
                 }
             }
@@ -107,8 +107,14 @@ namespace OOP_final_project
                     Console.Write($"{field.Name}: ");
                     string input = Console.ReadLine();
 
+
                     if (field.Type == FieldType.Int)
                     {
+                        while (!int.TryParse(input, out int intValue))
+                        {
+                            Console.Write($"Invalid input. Please enter a valid number for {field.Name}: ");
+                            input = Console.ReadLine();
+                        }
                         values.Add(int.Parse(input));
                     }
                     else
@@ -255,7 +261,8 @@ namespace OOP_final_project
                 }
             }
             Environment.Exit(0);
-    }        }
+        }
+    }
 
     public enum FieldType
     {
