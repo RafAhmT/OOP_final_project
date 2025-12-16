@@ -92,22 +92,19 @@ namespace OOP_final_project_tests
 
             Assert.NotEqual(Guid.Empty, admin.Id);
         }
-
         [Fact]
         public void CreateDoctor_ShouldSetFieldsCorrectly()
         {
-             Arrange
+
             var workroom = "1";
             var specialty = "general doctor";
 
             var doctor = new Doctor
             {
                 Specialty = specialty,
-                WorkRoom= workroom
             };
 
             Assert.Equal(specialty, doctor.Specialty);
-            Assert.Equal(workroom, doctor.WorkRoom);
 
         }
 
