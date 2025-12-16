@@ -47,12 +47,12 @@ namespace OOP_final_project_tests
         {
             var name = "test nurse";
 
-            var admin = new Nurse
+            var nurse = new Nurse
             {
                 Name = name
             };
 
-            Assert.Equal(name, admin.Name);
+            Assert.Equal(name, nurse.Name);
         }
         [Fact]
         public void NewNurse_ShouldGenerateNonEmptyId()
@@ -74,29 +74,29 @@ namespace OOP_final_project_tests
 
             Assert.Equal(workarea, nurse.WorkArea);
         }
+        [Fact]
         public void Doctor_should_not_be_empty()
         {
             var name = "test doctor";
 
-            var admin = new Doctor
+            var doctor = new Doctor
             {
                 Name = name
             };
 
-            Assert.Equal(name, admin.Name);
+            Assert.Equal(name, doctor.Name);
         }
         [Fact]
         public void NewDoctor_ShouldGenerateNonEmptyId()
         {
-            var admin = new Doctor();
+            var Doctor = new Doctor();
 
-            Assert.NotEqual(Guid.Empty, admin.Id);
+            Assert.NotEqual(Guid.Empty, Doctor.Id);
         }
         [Fact]
         public void CreateDoctor_ShouldSetFieldsCorrectly()
         {
 
-            var workroom = "1";
             var specialty = "general doctor";
 
             var doctor = new Doctor
